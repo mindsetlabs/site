@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mindset Labs — Michael Lea</title>
   <meta name="description" content="Coaching, yoga and speaking with Michael Lea. Helping people understand themselves and live with more clarity.">
+
+  <!-- Favicon + browser theme -->
+  <link rel="icon" href="logo.png">
+  <meta name="theme-color" content="#F5F2EE">
+
+  <!-- Social sharing preview (Instagram / iMessage / etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mindset Labs — Michael Lea">
+  <meta property="og:description" content="Coaching, yoga and speaking with Michael Lea. Helping people understand themselves and live with more clarity.">
+  <meta property="og:image" content="https://mindsetlabs.org/hero.jpg">
+  <meta property="og:url" content="https://mindsetlabs.org/">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -68,6 +81,21 @@
       transition: background 0.2s !important;
     }
     .nav-cta:hover { background: var(--sage) !important; color: var(--white) !important; }
+
+    /* ── MOBILE NAV TOGGLE (hidden on desktop) ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      padding: 6px; z-index: 110;
+    }
+    .nav-toggle span {
+      width: 24px; height: 2px; background: var(--black);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ── HERO ── */
     .hero {
@@ -474,7 +502,24 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
-      .nav-links li:not(:last-child) { display: none; }
+
+      /* Working mobile menu: slide-in drawer instead of hiding links */
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; right: 0;
+        height: 100vh; width: min(78vw, 320px);
+        flex-direction: column; align-items: flex-start; justify-content: center;
+        gap: 1.8rem; padding: 2rem 2.5rem;
+        background: var(--cream);
+        border-left: 1px solid var(--border);
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        box-shadow: -20px 0 50px rgba(0,0,0,0.06);
+      }
+      nav.open .nav-links { transform: translateX(0); }
+      .nav-links a { font-size: 0.95rem; }
+      .nav-cta { padding: 0.8rem 1.6rem; }
+
       .hero { grid-template-columns: 1fr; }
       .hero-right { height: 60vw; }
       .hero-left { padding: 8rem 1.5rem 3rem; }
@@ -499,13 +544,16 @@
     <img src="logo.png" alt="Mindset Labs">
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+    <li><a href="#mike">About</a></li>
     <li><a href="#coaching">Coaching</a></li>
     <li><a href="#yoga">Yoga</a></li>
     <li><a href="#speaking">Speaking</a></li>
     <li><a href="https://phil-ai.app" target="_blank" rel="noopener">Phil.ai</a></li>
     <li><a href="https://www.mindsetlabs.net/get-started" class="nav-cta">Work With Me</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -724,7 +772,7 @@
   <div>
     <p class="event-label">Upcoming Event</p>
     <p class="event-title">'Rewiring Anxiety' Seminar</p>
-    <p class="event-date">May 25 · 6PM AEST · Online</p>
+    <p class="event-date">6 July · 6PM AEST · Online</p>
   </div>
   <a href="https://events.humanitix.com/rewiring-anxiety" target="_blank" rel="noopener" class="btn">Get Tickets</a>
 </div>
@@ -775,11 +823,26 @@
 </footer>
 
 <script>
+  // Scroll reveal
   const items = document.querySelectorAll('.r');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
   }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
   items.forEach(el => obs.observe(el));
+
+  // Mobile menu toggle
+  const navEl = document.querySelector('nav');
+  const toggle = document.querySelector('.nav-toggle');
+  toggle.addEventListener('click', () => {
+    const open = navEl.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  navEl.querySelectorAll('.nav-links a').forEach(link =>
+    link.addEventListener('click', () => {
+      navEl.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    })
+  );
 </script>
 
 </body>
