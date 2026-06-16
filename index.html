@@ -461,6 +461,41 @@
 
     .close h2 em { font-style: italic; color: var(--sage); }
 
+    /* ── CONTACT FORM ── */
+    .contact-sub {
+      font-size: 1rem; color: var(--mid); line-height: 1.8;
+      max-width: 32rem; margin: 0 auto 2.5rem;
+    }
+    .contact-form {
+      max-width: 36rem; margin: 0 auto; text-align: left;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .contact-form .field-row { display: flex; gap: 1rem; }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%; background: var(--white);
+      border: 1px solid var(--border);
+      padding: 0.95rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 300; color: var(--black);
+      transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--light); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: var(--sage); }
+    .contact-form textarea { resize: vertical; min-height: 8rem; }
+    .contact-form button.btn {
+      animation: none; opacity: 1; align-self: flex-start;
+      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    }
+    .form-status {
+      font-size: 0.85rem; color: var(--sage); min-height: 1.2rem;
+      margin-top: 0.25rem;
+    }
+    .form-status.error { color: #B4533F; }
+
     /* ── FOOTER ── */
     footer {
       background: var(--dark); color: rgba(255,255,255,0.3);
@@ -532,6 +567,7 @@
       .speaking-list { margin-top: 2rem; }
       .talk-row { grid-template-columns: 1fr; gap: 1rem; }
       .event-bar { grid-template-columns: 1fr; }
+      .contact-form .field-row { flex-direction: column; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -549,7 +585,7 @@
     <li><a href="#yoga">Yoga</a></li>
     <li><a href="#speaking">Speaking</a></li>
     <li><a href="https://phil-ai.app" target="_blank" rel="noopener">Phil.ai</a></li>
-    <li><a href="https://www.mindsetlabs.net/get-started" class="nav-cta">Work With Me</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -566,7 +602,7 @@
       <em>patterns.</em>
     </h1>
     <p class="hero-body">I help people understand what's actually driving them — so they can stop reacting and start living with more clarity, confidence, and direction.</p>
-    <a href="https://www.mindsetlabs.net/get-started" class="btn">Let's Chat</a>
+    <a href="#contact" class="btn">Let's Chat</a>
   </div>
   <div class="hero-right">
     <img src="hero.jpg" alt="Michael Lea">
@@ -616,7 +652,7 @@
       <div class="about-pull">
         <p>What you believe quietly drives everything.</p>
       </div>
-      <a href="https://www.mindsetlabs.net/get-started" class="btn outline" style="margin-top:2rem">Get Started</a>
+      <a href="#contact" class="btn outline" style="margin-top:2rem">Get Started</a>
     </div>
   </div>
 </section>
@@ -641,7 +677,7 @@
         <li>You're not carrying as much</li>
         <li>You feel lighter</li>
       </ul>
-      <a href="https://www.mindsetlabs.net/get-started" class="btn">Get Started</a>
+      <a href="#contact" class="btn">Get Started</a>
     </div>
     <div class="service-card">
       <p class="service-tag">Package 02</p>
@@ -654,7 +690,7 @@
         <li>Steadier sense of direction</li>
         <li>More in control of your life</li>
       </ul>
-      <a href="https://www.mindsetlabs.net/get-started" class="btn">Get Started</a>
+      <a href="#contact" class="btn">Get Started</a>
     </div>
     <div class="service-card">
       <p class="service-tag">Package 03</p>
@@ -666,7 +702,7 @@
         <li>Clear baggage, not collect it</li>
         <li>Bulletproof to whatever comes</li>
       </ul>
-      <a href="https://www.mindsetlabs.net/get-started" class="btn">Get In Touch</a>
+      <a href="#contact" class="btn">Get In Touch</a>
     </div>
   </div>
 </section>
@@ -729,7 +765,7 @@
         <li>Breath, awareness, and a practice that continues off the mat</li>
       </ul>
       <p class="r d3" style="font-size:0.78rem;color:rgba(255,255,255,0.3);margin-bottom:1.5rem">1:1 Sessions · $80 / 45min &nbsp;·&nbsp; Group Sessions available</p>
-      <a href="https://www.mindsetlabs.net/get-started" class="btn r d3">Get Started</a>
+      <a href="#contact" class="btn r d3">Get Started</a>
     </div>
   </div>
 </section>
@@ -748,21 +784,21 @@
         <p class="talk-title">Rewiring Anxiety</p>
         <p class="talk-desc">This isn't about numbing anxiety. It's about returning to life without fear. We cover the randomness myth, the stories you tell yourself, and the path to changing your default response — for good.</p>
       </div>
-      <a href="https://www.mindsetlabs.net/get-started" class="talk-link">Book this talk</a>
+      <a href="#contact" class="talk-link">Book this talk</a>
     </div>
     <div class="talk-row">
       <div>
         <p class="talk-title">Emotions Are Feedback</p>
         <p class="talk-desc">Most people try to manage their emotions or escape them. But what if they're showing you something you've been missing? This talk reframes everything.</p>
       </div>
-      <a href="https://www.mindsetlabs.net/get-started" class="talk-link">Book this talk</a>
+      <a href="#contact" class="talk-link">Book this talk</a>
     </div>
     <div class="talk-row">
       <div>
         <p class="talk-title">Get Out of Your Own Head</p>
         <p class="talk-desc">The loops. The overthinking. The quiet voice that keeps pulling you back. This is where that starts to become visible — and loses its grip.</p>
       </div>
-      <a href="https://www.mindsetlabs.net/get-started" class="talk-link">Book this talk</a>
+      <a href="#contact" class="talk-link">Book this talk</a>
     </div>
   </div>
 </section>
@@ -804,10 +840,27 @@
   </div>
 </section>
 
-<!-- CLOSE CTA -->
-<section class="close">
+<!-- CONTACT -->
+<section class="close" id="contact">
   <h2 class="r">If you see yourself in this,<br><em>let's have a conversation.</em></h2>
-  <a href="https://www.mindsetlabs.net/get-started" class="btn r d1">Let's Chat</a>
+  <p class="contact-sub r d1">Send me a message and I'll get back to you within 24 hours.</p>
+
+  <form class="contact-form r d1" id="contactForm">
+    <!-- Get a free key at https://web3forms.com — paste it below -->
+    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="subject" value="New message from mindsetlabs.org">
+    <input type="hidden" name="from_name" value="Mindset Labs Website">
+    <!-- Honeypot: hidden field to catch spam bots -->
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="field-row">
+      <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+      <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
+    </div>
+    <textarea name="message" rows="5" placeholder="What's on your mind?" aria-label="Your message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -817,7 +870,7 @@
     <a href="https://www.instagram.com/mike.lea_/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://medium.com/@mike_77852" target="_blank" rel="noopener">Medium</a>
     <a href="https://phil-ai.app" target="_blank" rel="noopener">Phil.ai</a>
-    <a href="https://www.mindsetlabs.net/get-started">Contact</a>
+    <a href="#contact">Contact</a>
   </div>
   <p>© 2026 Mindset Labs</p>
 </footer>
@@ -843,6 +896,35 @@
       toggle.setAttribute('aria-expanded', 'false');
     })
   );
+
+  // Contact form submission (Web3Forms)
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.classList.remove('error');
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          status.textContent = "Thanks — your message is on its way. I'll reply within 24 hours.";
+        } else {
+          status.classList.add('error');
+          status.textContent = 'Something went wrong. Please try again in a moment.';
+        }
+      } catch (err) {
+        status.classList.add('error');
+        status.textContent = 'Network error — please try again.';
+      }
+    });
+  }
 </script>
 
 </body>
