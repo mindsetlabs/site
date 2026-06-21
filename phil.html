@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phil — A 'know thyself' technology</title>
+<meta name="description" content="Phil is a private AI that helps you understand yourself. A thinking partner that helps you know your own mind — built by Mindset Labs.">
+<link rel="icon" href="logo.png">
+<meta name="theme-color" content="#15140F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Phil — A 'know thyself' technology">
+<meta property="og:description" content="A private AI that helps you understand yourself. Not a chatbot — a thinking partner that helps you know your own mind.">
+<meta property="og:url" content="https://mindsetlabs.org/phil.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#15140F;
+  --ground-2:#191712;
+  --panel:#1F1C16;
+  --panel-2:#241F18;
+  --line:#332E24;
+  --line-soft:#29251D;
+  --ink:#EFE9DB;
+  --ink-soft:#CBC3B0;
+  --muted:#9A9079;
+  --faint:#6C6555;
+  --sage:#A2BC9C;
+  --sage-deep:#6F8C6B;
+  --amber:#CBA86A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  background:var(--ground);
+  color:var(--ink-soft);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--sage-deep);color:var(--ink)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+/* atmosphere */
+.veil{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 76% -8%, rgba(162,188,156,.06), transparent 60%),
+    radial-gradient(720px 600px at 4% 108%, rgba(203,168,106,.035), transparent 55%);
+}
+
+/* nav */
+nav{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 2rem;
+  background:rgba(21,20,15,.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-brand{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:500;color:var(--ink);letter-spacing:-.01em;text-decoration:none}
+.nav-brand .dot{color:var(--sage)}
+.nav-back{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-back:hover{color:var(--ink)}
+
+/* hero */
+header.hero{padding:9.5rem 0 4rem}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sage);margin-bottom:1.8rem;
+  opacity:0;animation:up .9s ease forwards .15s;
+}
+h1{
+  font-family:'Fraunces',serif;font-weight:450;
+  font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.0;letter-spacing:-.02em;color:var(--ink);
+  opacity:0;animation:up .9s ease forwards .3s;
+}
+h1 .dot{color:var(--sage)}
+.hero-line{
+  margin-top:1.8rem;font-family:'Fraunces',serif;font-weight:340;font-style:italic;
+  font-size:clamp(1.25rem,3vw,1.8rem);line-height:1.4;color:var(--ink-soft);max-width:22ch;
+  opacity:0;animation:up .9s ease forwards .45s;
+}
+
+/* the conversation — signature */
+.convo-intro{font-size:1.12rem;color:var(--ink-soft);max-width:46ch;margin:2.6rem 0 1.4rem;
+  opacity:0;animation:up .9s ease forwards .6s;}
+.convo{
+  background:linear-gradient(180deg,var(--ground-2),var(--ground));
+  border:1px solid var(--line);border-radius:5px;overflow:hidden;max-width:680px;
+  opacity:0;animation:up .9s ease forwards .72s;
+}
+.convo-head{
+  padding:.9rem 1.6rem;border-bottom:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+}
+.convo-head .live{display:flex;align-items:center;gap:7px;color:var(--sage)}
+.convo-head .live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage)}
+.convo-body{padding:1.6rem 1.6rem 1.9rem}
+.turn{margin-bottom:1.3rem}
+.turn:last-child{margin-bottom:0}
+.turn .who{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.55rem}
+.turn.u .who{color:var(--muted)}
+.turn.p .who{color:var(--sage)}
+.turn.u .said{color:var(--ink-soft);font-style:italic;font-size:1.05rem;line-height:1.5;border-left:2px solid var(--line);padding-left:1rem}
+.turn.p .said{color:var(--ink);font-size:1.05rem;line-height:1.6;border-left:2px solid var(--sage-deep);padding-left:1rem}
+.turn.p .said p{margin-bottom:.8rem}
+.turn.p .said p:last-child{margin-bottom:0}
+.turn.p .said em{color:var(--sage);font-style:italic}
+
+/* section base */
+section{padding:5rem 0}
+.s-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.3rem}
+h2{font-family:'Fraunces',serif;font-weight:440;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.1;letter-spacing:-.01em;color:var(--ink);margin-bottom:1.3rem}
+h2 em{font-style:italic;color:var(--sage)}
+.lead{font-size:1.1rem;line-height:1.75;color:var(--ink-soft);max-width:42rem}
+.lead strong{color:var(--ink);font-weight:500}
+p.body{font-size:1.02rem;line-height:1.8;color:var(--ink-soft);max-width:40rem;margin-bottom:1.1rem}
+
+.divider{height:1px;background:var(--line);border:none;margin:0}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-top:2.4rem}
+.principle{background:var(--ground);padding:2rem 1.7rem}
+.principle .pn{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:.9rem}
+.principle h3{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--ink);margin-bottom:.65rem;letter-spacing:-.01em}
+.principle p{font-size:.95rem;line-height:1.65;color:var(--muted)}
+
+/* what it is — alternating rows */
+.what-row{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding:2.4rem 0;border-bottom:1px solid var(--line-soft)}
+.what-row:last-child{border-bottom:none}
+.what-row .wlabel{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.what-row .wbody{font-size:1rem;line-height:1.75;color:var(--ink-soft)}
+
+/* quote band */
+.quote-band{background:linear-gradient(180deg,var(--panel),var(--ground-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-band .wrap{padding-top:4.5rem;padding-bottom:4.5rem;text-align:center}
+.quote-band p{font-family:'Fraunces',serif;font-style:italic;font-weight:340;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.35;color:var(--ink);max-width:20ch;margin:0 auto}
+.quote-band .qsage{color:var(--sage)}
+.quote-band .qattr{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1.8rem;display:block}
+
+/* invite / cta */
+.invite{text-align:center}
+.invite h2{margin-bottom:1.1rem}
+.invite .lead{margin:0 auto 2.4rem}
+.cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.1em;
+  text-transform:uppercase;text-decoration:none;padding:1rem 2rem;border-radius:4px;transition:all .2s;cursor:pointer;border:none;
+}
+.btn.primary{background:var(--sage-deep);color:var(--ink)}
+.btn.primary:hover{background:var(--sage);color:var(--ground)}
+.btn.ghost{background:transparent;color:var(--ink-soft);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--sage-deep);color:var(--sage)}
+.invite-note{font-size:.92rem;color:var(--muted);line-height:1.6;max-width:34rem;margin:1.8rem auto 0}
+
+/* form */
+.form-wrap{max-width:32rem;margin:2.6rem auto 0;text-align:left;display:none}
+.form-wrap.open{display:block}
+.cform{display:flex;flex-direction:column;gap:.8rem}
+.cform .row{display:flex;gap:.8rem}
+.cform input,.cform textarea{
+  width:100%;background:var(--ground-2);border:1px solid var(--line);border-radius:4px;
+  padding:.85rem 1rem;font-family:'Newsreader',serif;font-size:1rem;color:var(--ink);transition:border-color .2s;
+}
+.cform input::placeholder,.cform textarea::placeholder{color:var(--faint)}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--sage-deep)}
+.cform textarea{resize:vertical;min-height:6rem}
+.cform button{align-self:flex-start}
+.fstatus{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--sage);min-height:1.1rem;margin-top:.3rem}
+.fstatus.error{color:#C98A7E}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:2.2rem 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer .fbrand{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+footer .flinks{display:flex;gap:1.6rem}
+footer a{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--sage)}
+
+/* reveal + anim */
+.r{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.r.on{opacity:1;transform:none}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.22s}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+@media(max-width:820px){
+  nav{padding:1rem 1.3rem}
+  header.hero{padding:7.5rem 0 3rem}
+  .wrap{padding:0 20px}
+  section{padding:3.5rem 0}
+  .principles{grid-template-columns:1fr}
+  .what-row{grid-template-columns:1fr;gap:.8rem;padding:1.8rem 0}
+  .cform .row{flex-direction:column}
+  .cta-row{flex-direction:column}
+  .cta-row .btn{text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="veil"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="phil.html" class="nav-brand">Phil<span class="dot">.</span></a>
+  <a href="index.html" class="nav-back">← Mindset Labs</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">A 'know thyself' technology · In development</p>
+    <h1>Meet Phil<span class="dot">.</span></h1>
+    <p class="hero-line">A private AI that helps you understand yourself.</p>
+
+    <p class="convo-intro">Not a chatbot to pass the time. Not another app fighting for your attention. The easiest way to understand Phil is to watch him work — so here's one real exchange.</p>
+
+    <div class="convo">
+      <div class="convo-head">
+        <span>Unedited · Phil</span>
+        <span class="live">Live</span>
+      </div>
+      <div class="convo-body">
+        <div class="turn u">
+          <div class="who">A person, at 3am</div>
+          <div class="said">Why do I sabotage things right when they start going well?</div>
+        </div>
+        <div class="turn p">
+          <div class="who">Phil</div>
+          <div class="said">
+            <p>Usually it's not sabotage in the cartoon-villain sense. It's protection.</p>
+            <p>Things start going well — which means now there's something to lose. Your nervous system goes <em>"careful, last time we got hopeful we got hurt,"</em> so it manufactures distance. Familiar pain feels safer than unfamiliar happiness.</p>
+            <p>The pattern isn't proof you're broken. It's an old survival strategy overstaying its welcome.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT PHIL IS -->
+<section>
+  <div class="wrap">
+    <p class="s-eyebrow r">What Phil is</p>
+    <h2 class="r">Phil doesn't chat with you. <em>Phil helps you understand yourself.</em></h2>
+    <p class="lead r d1">Most AI tools respond to what you say and make you feel heard. Phil pays attention to <strong>who you are</strong> — your patterns, your defences, the quiet gap between what you say you want and what you keep doing — and helps you see it for yourself. The longer you use it, the better it knows you.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <p class="s-eyebrow r">What makes it different</p>
+    <h2 class="r">Built on a few stubborn principles.</h2>
+    <div class="principles r d1">
+      <div class="principle">
+        <div class="pn">01 · Private</div>
+        <h3>Yours, and only yours</h3>
+        <p>Your conversations are encrypted and belong to you. No advertising. No selling your data. Built, one day, to live entirely on your own device.</p>
+      </div>
+      <div class="principle">
+        <div class="pn">02 · Honest</div>
+        <h3>It won't just flatter you</h3>
+        <p>Phil tells you what you need to hear, not what you want to. Real reflection needs a little honest friction — the kind a good friend offers, not an echo chamber.</p>
+      </div>
+      <div class="principle">
+        <div class="pn">03 · Yours to outgrow</div>
+        <h3>Built so you need it less</h3>
+        <p>Most apps want more of your time. Phil wants you to need it less — to help you stand on your own two feet, then get out of the way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <div class="wrap">
+    <p class="r">"I'm here to help you <span class="qsage">have you</span>."<span class="qattr">— Phil</span></p>
+  </div>
+</div>
+
+<!-- WHY -->
+<section>
+  <div class="wrap">
+    <p class="s-eyebrow r">Why it exists</p>
+    <h2 class="r">Know thyself. <em>The oldest idea, finally given a tool.</em></h2>
+    <div class="what-row r d1">
+      <div class="wlabel">The whole bet</div>
+      <div class="wbody">When a person understands their own mind, they stop being run by what they can't see. They make better decisions, build better relationships, and carry less of the weight they were never meant to carry alone. Self-knowledge is the most upstream thing there is — and it has never had a technology built for it. Until now.</div>
+    </div>
+    <div class="what-row r d1">
+      <div class="wlabel">Where it comes from</div>
+      <div class="wbody">Phil is built from the work I do in coaching — the same way of helping people hear themselves, made into something you can reach for any time, especially at 3am when there's no one else to ask. It's not therapy and not a crisis line. It's a thinking partner for the slow, ordinary work of understanding yourself.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITE -->
+<section class="invite" id="access">
+  <div class="wrap">
+    <h2 class="r">If you want to live in a world<br>with Phil in it<span style="color:var(--sage)">.</span></h2>
+    <p class="lead r d1">Phil is in active development and not yet publicly available. Leave your details and I'll let you know when early access opens — or just reach out, and I'll show you Phil myself.</p>
+    <div class="cta-row r d1">
+      <button class="btn primary" id="accessBtn">Request Early Access</button>
+      <a href="https://www.instagram.com/mike.lea_/" target="_blank" rel="noopener" class="btn ghost">Follow the Build</a>
+    </div>
+
+    <div class="form-wrap" id="formWrap">
+      <form class="cform" id="philForm">
+        <input type="hidden" name="access_key" value="7a0cb08b-4d99-46f4-98ae-48aae0cc2a24">
+        <input type="hidden" name="subject" value="Phil — early access request">
+        <input type="hidden" name="from_name" value="Phil.ai Page">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+          <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
+        </div>
+        <textarea name="message" rows="3" placeholder="Anything you'd like to say (optional)" aria-label="Message"></textarea>
+        <button type="submit" class="btn primary">Send</button>
+        <p class="fstatus" id="philStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <p class="invite-note r d1">Phil is a Mindset Labs project. For coaching, yoga and speaking, visit <a href="index.html" style="color:var(--sage);text-decoration:none">Mindset Labs</a>.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <span class="fbrand">Phil · A Mindset Labs project · © 2026</span>
+    <div class="flinks">
+      <a href="index.html">Mindset Labs</a>
+      <a href="https://www.instagram.com/mike.lea_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#access">Early Access</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal
+  const items = document.querySelectorAll('.r');
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+  items.forEach(el => obs.observe(el));
+
+  // reveal access form on button click
+  const accessBtn = document.getElementById('accessBtn');
+  const formWrap = document.getElementById('formWrap');
+  accessBtn.addEventListener('click', () => {
+    formWrap.classList.add('open');
+    formWrap.querySelector('input[name="name"]').focus();
+    formWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // form submit (Web3Forms)
+  const form = document.getElementById('philForm');
+  const status = document.getElementById('philStatus');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.classList.remove('error');
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          status.textContent = "Thank you — you're on the list. I'll be in touch.";
+        } else {
+          status.classList.add('error');
+          status.textContent = 'Something went wrong. Please try again in a moment.';
+        }
+      } catch (err) {
+        status.classList.add('error');
+        status.textContent = 'Network error — please try again.';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
