@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mindset Labs — Michael Lea</title>
-  <meta name="description" content="Coaching, yoga and speaking with Michael Lea. Helping people understand themselves and live with more clarity.">
+  <meta name="description" content="Coaching, yoga and speaking with Michael Lea. A system for living, performing and recovering better — from wherever you're starting.">
 
   <!-- Favicon + browser theme -->
   <link rel="icon" href="logo.png">
@@ -13,7 +13,7 @@
   <!-- Social sharing preview (Instagram / iMessage / etc.) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mindset Labs — Michael Lea">
-  <meta property="og:description" content="Coaching, yoga and speaking with Michael Lea. Helping people understand themselves and live with more clarity.">
+  <meta property="og:description" content="A system for living, performing and recovering better — from wherever you're starting. Coaching, yoga and speaking with Michael Lea.">
   <meta property="og:image" content="https://mindsetlabs.org/hero.jpg">
   <meta property="og:url" content="https://mindsetlabs.org/">
   <meta name="twitter:card" content="summary_large_image">
@@ -185,6 +185,70 @@
 
     .dark .body-text { color: rgba(255,255,255,0.7); }
 
+    /* ── BETTER MARQUEE ── */
+    .better-band {
+      background: var(--dark); color: var(--white);
+      padding: 2.4rem 0; overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .marquee {
+      display: flex; width: max-content;
+      animation: scroll-x 38s linear infinite;
+    }
+    .marquee:hover { animation-play-state: paused; }
+    .marquee span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.85);
+      padding: 0 1.6rem; white-space: nowrap;
+    }
+    .marquee span em { color: var(--sage); font-style: italic; }
+    .marquee .dot { color: rgba(255,255,255,0.25); padding: 0 0.2rem; }
+    @keyframes scroll-x {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── TWO DOORS ── */
+    .doors-intro { max-width: 40rem; margin-bottom: 4rem; }
+    .doors {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+    }
+    .door {
+      background: var(--white); padding: 3rem;
+      display: flex; flex-direction: column;
+    }
+    .door-num {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 1.2rem;
+    }
+    .door h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 400; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .door h3 em { font-style: italic; color: var(--sage); }
+    .door p {
+      font-size: 0.95rem; color: var(--mid); line-height: 1.8;
+      margin-bottom: 1.6rem;
+    }
+    .door .door-for {
+      font-size: 0.78rem; color: var(--dark); line-height: 1.7;
+      border-top: 1px solid var(--border); padding-top: 1.2rem; margin-top: auto;
+    }
+    .door .door-for strong { font-weight: 500; }
+    .doors-note {
+      text-align: center; margin-top: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      font-style: italic; font-weight: 300; color: var(--dark);
+      line-height: 1.4; max-width: 30ch; margin-left: auto; margin-right: auto;
+    }
+    .doors-note em { color: var(--sage); }
+
     /* ── FOR YOU IF ── */
     .for-you {
       display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
@@ -270,6 +334,34 @@
       font-size: 1.25rem; font-style: italic;
       color: var(--dark); line-height: 1.5;
       margin-bottom: 0 !important;
+    }
+
+    /* ── THE SYSTEM ── */
+    .system-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: rgba(255,255,255,0.1); margin-top: 3.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .system-card {
+      background: var(--dark); padding: 2.2rem 1.8rem;
+    }
+    .system-card .sc-num {
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 1rem;
+    }
+    .system-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .system-card p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.7;
+    }
+    .system-card .soon {
+      display: inline-block; margin-top: 0.7rem;
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage); border: 1px solid rgba(79,107,85,0.5);
+      padding: 0.2rem 0.6rem; border-radius: 2px;
     }
 
     /* ── SERVICES ── */
@@ -370,6 +462,28 @@
     }
 
     .yoga-list li::before { content: '—'; color: var(--sage); font-size: 0.75rem; }
+
+    /* yoga schedule */
+    .yoga-sched { margin: 1.6rem 0 1.8rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .ys-day {
+      padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: baseline;
+    }
+    .ys-day .ys-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: #fff;
+      min-width: 5.5rem;
+    }
+    .ys-classes { display: flex; flex-direction: column; gap: 0.5rem; }
+    .ys-class {
+      display: flex; justify-content: space-between; gap: 1rem;
+      font-size: 0.86rem; color: rgba(255,255,255,0.78);
+    }
+    .ys-class .ys-type { color: rgba(255,255,255,0.6); }
+    .ys-class .ys-time { color: var(--sage); font-weight: 400; white-space: nowrap; }
+    .yoga-meta {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 1.5rem;
+    }
+    .yoga-meta strong { color: rgba(255,255,255,0.75); font-weight: 400; }
 
     /* ── SPEAKING ── */
     .speaking-list {
@@ -560,6 +674,8 @@
       .hero-left { padding: 8rem 1.5rem 3rem; }
       .s { padding: 5rem 1.5rem; }
       .for-you, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .doors { grid-template-columns: 1fr; }
+      .system-grid { grid-template-columns: 1fr 1fr; }
       .services-grid, .testimonials { grid-template-columns: 1fr; }
       .yoga-grid { grid-template-columns: 1fr; }
       .yoga-content { padding: 2.5rem 1.5rem; }
@@ -580,10 +696,9 @@
     <img src="logo.png" alt="Mindset Labs">
   </a>
   <ul class="nav-links">
-    <li><a href="#mike">About</a></li>
     <li><a href="#coaching">Coaching</a></li>
     <li><a href="#yoga">Yoga</a></li>
-    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="speaking.html">Speaking</a></li>
     <li><a href="phil.html">Phil.ai</a></li>
     <li><a href="#contact" class="nav-cta">Work With Me</a></li>
   </ul>
@@ -597,11 +712,11 @@
   <div class="hero-left">
     <p class="hero-tag">Mindset Labs · Michael Lea</p>
     <h1 class="hero-h1">
-      You're not broken.<br>
-      You're stuck in<br>
-      <em>patterns.</em>
+      Live, perform<br>
+      and recover<br>
+      <em>better.</em>
     </h1>
-    <p class="hero-body">I help people understand what's actually driving them — so they can stop reacting and start living with more clarity, confidence, and direction.</p>
+    <p class="hero-body">Wherever you're starting — climbing toward your best, or finding your way back from your worst — I help you get there. Not through grinding harder, but through understanding what's actually driving you.</p>
     <a href="#contact" class="btn">Let's Chat</a>
   </div>
   <div class="hero-right">
@@ -609,31 +724,66 @@
   </div>
 </section>
 
-<!-- FOR YOU IF -->
-<section class="s white" id="about">
-  <div class="for-you">
-    <div class="r">
-      <p class="eyebrow">This is for you if…</p>
-      <h2 class="display">Something feels<br><em>off.</em></h2>
-      <p class="body-text">You can't always name it. But something underneath isn't sitting right. You keep circling the same problems, the same patterns, the same conversations in your head. That's not a character flaw. That's a signal worth listening to.</p>
-    </div>
-    <ul class="for-you-list r d1">
-      <li>You can see where your life is heading… and you don't love the direction.</li>
-      <li>You feel stuck in your own head and can't seem to switch it off.</li>
-      <li>You're doing well on paper… but something feels off underneath.</li>
-      <li>You've tried different things, but nothing seems to actually stick.</li>
-      <li>You want to understand your emotions, not be controlled by them.</li>
-      <li>You feel like there's more to your life but you can't quite access it.</li>
-      <li>You want to feel comfortable being yourself again.</li>
-    </ul>
+<!-- BETTER MARQUEE -->
+<div class="better-band" aria-label="A practice for living better in every way">
+  <div class="marquee">
+    <span>Live <em>better</em><span class="dot">·</span></span>
+    <span>Feel <em>better</em><span class="dot">·</span></span>
+    <span>Move <em>better</em><span class="dot">·</span></span>
+    <span>Perform <em>better</em><span class="dot">·</span></span>
+    <span>Think <em>better</em><span class="dot">·</span></span>
+    <span>Recover <em>better</em><span class="dot">·</span></span>
+    <span>Sleep <em>better</em><span class="dot">·</span></span>
+    <span>Relate <em>better</em><span class="dot">·</span></span>
+    <span>Cope <em>better</em><span class="dot">·</span></span>
+    <span>Bounce back <em>better</em><span class="dot">·</span></span>
+    <span>Understand <em>better</em><span class="dot">·</span></span>
+    <!-- duplicate for seamless loop -->
+    <span>Live <em>better</em><span class="dot">·</span></span>
+    <span>Feel <em>better</em><span class="dot">·</span></span>
+    <span>Move <em>better</em><span class="dot">·</span></span>
+    <span>Perform <em>better</em><span class="dot">·</span></span>
+    <span>Think <em>better</em><span class="dot">·</span></span>
+    <span>Recover <em>better</em><span class="dot">·</span></span>
+    <span>Sleep <em>better</em><span class="dot">·</span></span>
+    <span>Relate <em>better</em><span class="dot">·</span></span>
+    <span>Cope <em>better</em><span class="dot">·</span></span>
+    <span>Bounce back <em>better</em><span class="dot">·</span></span>
+    <span>Understand <em>better</em><span class="dot">·</span></span>
   </div>
+</div>
+
+<!-- TWO DOORS -->
+<section class="s white" id="start">
+  <div class="doors-intro r">
+    <p class="eyebrow">Two ways in. One destination.</p>
+    <h2 class="display">Your best — from<br><em>wherever you're standing.</em></h2>
+    <p class="body-text">Some people come to climb. Some come to rebuild. The work is the same shape either way: understand what's driving you, and use that to get where you're trying to go.</p>
+  </div>
+
+  <div class="doors r d1">
+    <div class="door">
+      <p class="door-num">01 · Peak</p>
+      <h3>You're doing well — and you want your <em>edge.</em></h3>
+      <p>You're already capable. But you can feel there's another level, and something invisible keeps capping you at this one. We find what's actually in the way, so the next gear stops being a someday and starts being now.</p>
+      <p class="door-for"><strong>For</strong> — high performers, athletes, founders, creatives. Anyone who's good and wants to be great, without burning out to get there.</p>
+    </div>
+    <div class="door">
+      <p class="door-num">02 · Return</p>
+      <h3>You've been knocked down — and you need your <em>way back.</em></h3>
+      <p>Rupture, collapse, burnout, injury, a season that took something out of you. The way back isn't about forcing yourself forward. It's about understanding what happened, steadying the ground, and rebuilding — properly, so it holds.</p>
+      <p class="door-for"><strong>For</strong> — anyone returning from their worst. I've made this exact journey myself, and I know the way.</p>
+    </div>
+  </div>
+
+  <p class="doors-note r d1">Different starting points. <em>The same destination — you, at your best.</em></p>
 </section>
 
 <!-- FULL BLEED — STAIRS -->
 <div class="full-bleed">
   <img src="stairs.jpg" alt="">
   <div class="full-bleed-text">
-    <p>Most people aren't stuck because of their life.<br>They're stuck in how they see it.</p>
+    <p>You don't get better by forcing more.<br>You get better by seeing clearly.</p>
   </div>
 </div>
 
@@ -645,14 +795,47 @@
     </div>
     <div class="about-text r d1">
       <p class="eyebrow">About Mike</p>
-      <h2>I'm Mike.<br><em>I've lived this.</em></h2>
+      <h2>I'm Mike.<br><em>I've made the journey back.</em></h2>
       <p>There was a time I didn't think I'd make it to this point. My mind was a mess — anxiety, depression, and a lot of weight from decisions I had and hadn't made. Not because something was wrong with me, but because I didn't understand what was driving me.</p>
-      <p>Philosophy and mindset changed that. Now I help others understand themselves and find their way forward.</p>
-      <p>My work draws from philosophy, coaching, and yoga — but more than anything, it's about creating a space where you can be honest, understood, and find your own way.</p>
+      <p>I found my own way back, then spent years learning how to do it on purpose — in my own life, and in my own body. Philosophy, coaching and movement are how I climbed out, and how I've kept climbing since.</p>
+      <p>Now that's what I do for others: help people get back from their worst, reach for their best, and understand themselves well enough to keep getting better — for good.</p>
       <div class="about-pull">
         <p>What you believe quietly drives everything.</p>
       </div>
       <a href="#contact" class="btn outline" style="margin-top:2rem">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE SYSTEM -->
+<section class="s dark">
+  <div class="r">
+    <p class="eyebrow light">The system</p>
+    <h2 class="display" style="color:#fff">It's not a service.<br><em>It's a whole approach.</em></h2>
+    <p class="body-text">Mind and body, thinking and moving, the hard days and the high ones. Every part of what I do points at one thing: you, better. These are the ways in.</p>
+  </div>
+
+  <div class="system-grid r d1">
+    <div class="system-card">
+      <p class="sc-num">01</p>
+      <h4>Coaching</h4>
+      <p>The deep work. Understanding what drives you, and building something steadier underneath.</p>
+    </div>
+    <div class="system-card">
+      <p class="sc-num">02</p>
+      <h4>Yoga</h4>
+      <p>The same work, in the body. Movement that reconnects you to how you actually feel.</p>
+    </div>
+    <div class="system-card">
+      <p class="sc-num">03</p>
+      <h4>Speaking</h4>
+      <p>The ideas, shared wider. Talks that help a room see their own thinking more clearly.</p>
+    </div>
+    <div class="system-card">
+      <p class="sc-num">04</p>
+      <h4>Phil</h4>
+      <p>A private AI that helps you understand yourself — the work, with you any time.</p>
+      <a href="phil.html" class="soon">Coming · Learn more</a>
     </div>
   </div>
 </section>
@@ -662,7 +845,7 @@
   <div class="r">
     <p class="eyebrow">Coaching</p>
     <h2 class="display">Most people think they need<br>more discipline. <em>They don't.</em></h2>
-    <p class="body-text">What they actually need is to understand what's driving them. We don't just talk. We pull apart the patterns you've been stuck in and build something steadier underneath.</p>
+    <p class="body-text">They need to understand what's driving them. That's where better actually comes from — not forcing harder, but seeing clearly. We pull apart the patterns capping you, and build something steadier underneath.</p>
   </div>
 
   <div class="services-grid r d1">
@@ -711,7 +894,7 @@
 <section class="s cream">
   <div class="r">
     <p class="eyebrow">What people say</p>
-    <h2 class="display"><em>Change</em> starts with you.</h2>
+    <h2 class="display"><em>Better</em> starts with you.</h2>
   </div>
 
   <div class="testimonials r d1">
@@ -756,49 +939,28 @@
     </div>
     <div class="yoga-content">
       <p class="eyebrow light r">Yoga</p>
-      <h2 class="display r d1" style="color:#fff">A more practical<br>approach to <em>movement.</em></h2>
-      <p class="r d2" style="font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:1.5rem">For people who feel stiff, restricted or disconnected from their body. Simple, grounded and real.</p>
-      <ul class="yoga-list r d2">
-        <li>Slow, deliberate movements focused on what feels tight</li>
-        <li>Simple, practical cues — no jargon, no performance</li>
-        <li>A focus on how your body feels, not how it looks</li>
-        <li>Breath, awareness, and a practice that continues off the mat</li>
-      </ul>
-      <p class="r d3" style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem">1:1 Sessions · $80 / 45min &nbsp;·&nbsp; Group Sessions available</p>
-      <a href="#contact" class="btn r d3">Get Started</a>
-    </div>
-  </div>
-</section>
+      <h2 class="display r d1" style="color:#fff">Move better.<br>Feel <em>better.</em></h2>
+      <p class="r d2" style="font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:1.5rem">The same work as the coaching, done in the body. Online classes, all levels welcome — simple, grounded and real.</p>
 
-<!-- SPEAKING -->
-<section class="s white" id="speaking">
-  <div class="r">
-    <p class="eyebrow">Speaking</p>
-    <h2 class="display">Most people don't realise<br>they're living inside their<br><em>own thinking.</em></h2>
-    <p class="body-text">Conversations that help you see more clearly. Available as seminars, keynotes, and Q&As — online or in person.</p>
-  </div>
+      <div class="yoga-sched r d2">
+        <div class="ys-day">
+          <span class="ys-name">Tuesday</span>
+          <div class="ys-classes">
+            <div class="ys-class"><span class="ys-type">Strong Flow</span><span class="ys-time">7:00 AM</span></div>
+            <div class="ys-class"><span class="ys-type">Gentle Flow</span><span class="ys-time">4:30 PM</span></div>
+          </div>
+        </div>
+        <div class="ys-day">
+          <span class="ys-name">Thursday</span>
+          <div class="ys-classes">
+            <div class="ys-class"><span class="ys-type">Strong Flow</span><span class="ys-time">7:00 AM</span></div>
+            <div class="ys-class"><span class="ys-type">Gentle Flow</span><span class="ys-time">4:30 PM</span></div>
+          </div>
+        </div>
+      </div>
 
-  <div class="speaking-list r d1">
-    <div class="talk-row">
-      <div>
-        <p class="talk-title">Rewiring Anxiety</p>
-        <p class="talk-desc">This isn't about numbing anxiety. It's about returning to life without fear. We cover the randomness myth, the stories you tell yourself, and the path to changing your default response — for good.</p>
-      </div>
-      <a href="#contact" class="talk-link">Book this talk</a>
-    </div>
-    <div class="talk-row">
-      <div>
-        <p class="talk-title">Emotions Are Feedback</p>
-        <p class="talk-desc">Most people try to manage their emotions or escape them. But what if they're showing you something you've been missing? This talk reframes everything.</p>
-      </div>
-      <a href="#contact" class="talk-link">Book this talk</a>
-    </div>
-    <div class="talk-row">
-      <div>
-        <p class="talk-title">Get Out of Your Own Head</p>
-        <p class="talk-desc">The loops. The overthinking. The quiet voice that keeps pulling you back. This is where that starts to become visible — and loses its grip.</p>
-      </div>
-      <a href="#contact" class="talk-link">Book this talk</a>
+      <p class="yoga-meta r d3"><strong>$15 per class</strong> · All times AEST (Syd &amp; Melb) · All levels welcome<br>1:1 and group sessions — reach out for bookings.</p>
+      <a href="#contact" class="btn r d3">Book a Class</a>
     </div>
   </div>
 </section>
@@ -813,37 +975,10 @@
   <a href="https://events.humanitix.com/rewiring-anxiety" target="_blank" rel="noopener" class="btn">Get Tickets</a>
 </div>
 
-<!-- ARTICLES -->
-<section class="s cream">
-  <div class="r">
-    <p class="eyebrow">A few thoughts to sit with</p>
-    <h2 class="display" style="font-size:clamp(1.8rem,3vw,2.8rem)">From the blog.</h2>
-  </div>
-
-  <div class="articles-grid r d1">
-    <a href="https://medium.com/the-rabbit-note/a-conundrum-a-japanese-philosophy-a-life-lesson-on-happiness-fb85394dcfb8" target="_blank" rel="noopener" class="article-card">
-      <p class="article-title">A Conundrum, A Japanese Philosophy & A Life Lesson on Happiness</p>
-      <p class="article-link-label">Read on Medium →</p>
-    </a>
-    <a href="https://medium.com/quirky-rants/comparison-is-the-thief-of-joy-ae4f93fc7356" target="_blank" rel="noopener" class="article-card">
-      <p class="article-title">Comparison is the Thief of Joy</p>
-      <p class="article-link-label">Read on Medium →</p>
-    </a>
-    <a href="https://medium.com/@mike_77852/its-not-that-deep-c98ce7d52834" target="_blank" rel="noopener" class="article-card">
-      <p class="article-title">It's Not That Deep</p>
-      <p class="article-link-label">Read on Medium →</p>
-    </a>
-    <a href="https://medium.com/@mike_77852/ride-the-wu-wei-ve-e50acead1a94" target="_blank" rel="noopener" class="article-card">
-      <p class="article-title">Ride The Wu Wei(ve)</p>
-      <p class="article-link-label">Read on Medium →</p>
-    </a>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="close" id="contact">
-  <h2 class="r">If you see yourself in this,<br><em>let's have a conversation.</em></h2>
-  <p class="contact-sub r d1">Send me a message and I'll get back to you within 24 hours.</p>
+  <h2 class="r">Wherever you're starting,<br><em>let's get you better.</em></h2>
+  <p class="contact-sub r d1">Tell me where you're at and where you want to be. I'll get back to you within 24 hours.</p>
 
   <form class="contact-form r d1" id="contactForm">
     <!-- Get a free key at https://web3forms.com — paste it below -->
@@ -857,7 +992,7 @@
       <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
       <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
     </div>
-    <textarea name="message" rows="5" placeholder="What's on your mind?" aria-label="Your message" required></textarea>
+    <textarea name="message" rows="5" placeholder="Where are you at, and where do you want to be?" aria-label="Your message" required></textarea>
     <button type="submit" class="btn">Send Message</button>
     <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
   </form>
@@ -868,7 +1003,9 @@
   <img src="logo.png" alt="Mindset Labs" style="height:20px;opacity:0.4;filter:invert(1)">
   <div class="footer-links">
     <a href="https://www.instagram.com/mike.lea_/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://medium.com/@mike_77852" target="_blank" rel="noopener">Medium</a>
+    <a href="https://medium.com/@mike_77852" target="_blank" rel="noopener">Blog</a>
+    <a href="speaking.html">Speaking</a>
+    <a href="phil.html">Phil.ai</a>
     <a href="#contact">Contact</a>
   </div>
   <p>© 2026 Mindset Labs</p>
