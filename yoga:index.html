@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga with Mike — Mindset Labs</title>
+<meta name="description" content="Slow, grounded yoga for people who live too much in their heads. Online group classes and private sessions with Mike Lea. All levels, no performance.">
+
+<link rel="icon" href="/logo.png">
+<meta name="theme-color" content="#EEE8DC">
+
+<!-- Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yoga with Mike — Mindset Labs">
+<meta property="og:description" content="Slow, grounded yoga for people who live too much in their heads. Online classes and private sessions.">
+<meta property="og:image" content="https://mindsetlabs.org/yoga.jpg">
+<meta property="og:url" content="https://mindsetlabs.org/yoga">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --oat:#EEE8DC;        /* warm paper */
+    --oat-deep:#E4DCCB;   /* slightly deeper panel */
+    --pine:#26312A;       /* grounded dark green */
+    --pine-soft:#33413A;
+    --ink:#25231E;        /* warm charcoal text */
+    --ink-soft:#57534A;
+    --muted:#8A8271;
+    --sage:#6E8A6C;       /* accent */
+    --sage-ink:#54704F;   /* legible sage for small text on light */
+    --ember:#BC8B4B;      /* muted ochre, used sparingly */
+    --line:rgba(37,35,30,0.12);
+    --line-light:rgba(238,232,220,0.16);
+    --max:900px;
+  }
+
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    background:var(--oat);
+    color:var(--ink-soft);
+    font-family:'DM Sans',sans-serif;
+    font-weight:300;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{background:var(--sage);color:var(--oat)}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+
+  /* ── shared type ── */
+  .eyebrow{
+    font-size:0.68rem;font-weight:500;letter-spacing:0.22em;
+    text-transform:uppercase;color:var(--sage-ink);
+    margin-bottom:1.4rem;
+  }
+  .eyebrow.on-dark{color:var(--sage)}
+
+  h1,h2,h3{font-family:'Spectral',Georgia,serif;font-weight:300;color:var(--ink)}
+  h2.display{
+    font-size:clamp(2.1rem,5vw,3.6rem);
+    line-height:1.1;letter-spacing:-0.01em;margin-bottom:1.5rem;
+  }
+  h2.display em{font-style:italic;color:var(--sage-ink)}
+  .on-dark h2.display{color:var(--oat)}
+  .on-dark h2.display em{color:var(--sage)}
+
+  .lead{
+    font-family:'Spectral',serif;font-weight:300;
+    font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.6;
+    color:var(--ink);max-width:34ch;
+  }
+  p.body{max-width:60ch;margin-bottom:1.1rem;color:var(--ink-soft)}
+  p.body strong{color:var(--ink);font-weight:500}
+  .on-dark p.body{color:rgba(238,232,220,0.72)}
+  .on-dark p.body strong{color:var(--oat)}
+
+  /* ── buttons ── */
+  .btn{
+    display:inline-block;background:var(--ink);color:var(--oat);
+    padding:1rem 2.1rem;font-family:'DM Sans',sans-serif;
+    font-size:0.8rem;font-weight:500;letter-spacing:0.1em;
+    text-transform:uppercase;text-decoration:none;
+    transition:background 0.25s ease,transform 0.25s ease;
+    border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--sage-ink)}
+  .btn.light{background:var(--oat);color:var(--pine)}
+  .btn.light:hover{background:#fff}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--oat)}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+
+  /* ── sections ── */
+  section{padding:7rem 0}
+  .band{background:var(--oat)}
+  .band-deep{background:var(--oat-deep)}
+  .band-pine{background:var(--pine);color:var(--oat)}
+
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:6rem 32px 4rem;position:relative;
+  }
+  .hero .eyebrow{opacity:0;animation:rise 1s ease forwards 0.2s}
+  .hero h1{
+    font-size:clamp(2.8rem,8vw,5.2rem);line-height:1.02;
+    letter-spacing:-0.02em;margin:0.5rem 0 1.6rem;max-width:16ch;
+    opacity:0;animation:rise 1s ease forwards 0.45s;
+  }
+  .hero h1 em{font-style:italic;color:var(--sage-ink)}
+  .hero-sub{
+    font-size:1.05rem;color:var(--ink-soft);max-width:40ch;
+    margin:0 auto;opacity:0;animation:rise 1s ease forwards 0.65s;
+  }
+
+  /* breathing guide — the signature */
+  .breath{
+    position:relative;width:clamp(180px,42vw,280px);height:clamp(180px,42vw,280px);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:2.8rem;opacity:0;animation:fade 1.4s ease forwards 0.15s;
+  }
+  .breath-outer{
+    position:absolute;inset:0;border-radius:50%;
+    border:1px solid var(--ember);opacity:0.55;
+  }
+  .breath-core{
+    width:66%;height:66%;border-radius:50%;
+    background:radial-gradient(circle at 50% 42%,var(--sage),var(--sage-ink));
+    transform:scale(0.55);
+    transition:transform 4000ms ease-in-out;
+    box-shadow:0 20px 60px -20px rgba(84,112,79,0.7);
+  }
+  .breath-label{
+    position:absolute;left:0;right:0;bottom:-2.4rem;
+    font-size:0.66rem;font-weight:500;letter-spacing:0.24em;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  .scroll-cue{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--muted);opacity:0;animation:fade 1s ease forwards 1.2s;
+  }
+
+  /* ── practice: what to expect ── */
+  .expect{
+    list-style:none;margin-top:2.5rem;border-top:1px solid var(--line);
+  }
+  .expect li{
+    padding:1.15rem 0;border-bottom:1px solid var(--line);
+    display:flex;gap:1.1rem;align-items:baseline;
+    font-size:1rem;color:var(--ink);max-width:60ch;
+  }
+  .expect li::before{content:'—';color:var(--sage-ink);flex-shrink:0}
+
+  /* ── classes / schedule ── */
+  .flows{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2.5rem 0 3rem}
+  .flow{
+    background:var(--oat);border:1px solid var(--line);padding:1.8rem;
+  }
+  .flow h3{font-size:1.5rem;margin-bottom:0.3rem}
+  .flow .when{font-size:0.9rem;color:var(--sage-ink);font-weight:500;margin-bottom:0.7rem}
+  .flow p{font-size:0.95rem;color:var(--ink-soft);margin:0}
+  .price-note{
+    font-size:0.9rem;color:var(--muted);letter-spacing:0.02em;margin-bottom:2rem;
+  }
+  .price-note strong{color:var(--ink);font-weight:500}
+
+  .zenamu-shell{
+    background:var(--oat);border:1px solid var(--line);
+    padding:1.5rem;margin-top:1rem;min-height:180px;
+  }
+  #zenamu-calendar{min-height:120px}
+  .zenamu-fallback{
+    font-size:0.85rem;color:var(--muted);margin-top:1rem;text-align:center;
+  }
+  .zenamu-fallback a{color:var(--sage-ink)}
+
+  /* ── private: the centrepiece ── */
+  .private-head{max-width:40ch}
+  .private-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;
+    margin-top:3rem;align-items:start;
+  }
+  .private-give{list-style:none}
+  .private-give li{
+    padding:1.1rem 0;border-bottom:1px solid var(--line-light);
+    display:flex;gap:1rem;align-items:baseline;
+    color:rgba(238,232,220,0.82);font-size:1rem;
+  }
+  .private-give li::before{content:'·';color:var(--ember);font-weight:700;flex-shrink:0}
+  .private-give li:first-child{border-top:1px solid var(--line-light)}
+
+  .private-card{
+    background:var(--pine-soft);border:1px solid var(--line-light);
+    padding:2.2rem;position:sticky;top:2rem;
+  }
+  .private-card .rate{
+    font-family:'Spectral',serif;font-size:2.1rem;color:var(--oat);
+    line-height:1.1;margin-bottom:0.2rem;
+  }
+  .private-card .rate-sub{font-size:0.85rem;color:var(--sage);margin-bottom:1.5rem}
+  .private-card p{font-size:0.92rem;color:rgba(238,232,220,0.66);margin-bottom:1.6rem}
+  .private-card .btn{width:100%;text-align:center}
+
+  /* ── why ── */
+  .why .lead{max-width:32ch;margin-bottom:2rem}
+  .why p.body{font-size:1.02rem}
+
+  /* ── atmospheric band (photo w/ graceful fallback) ── */
+  .atmos{
+    height:52vh;min-height:340px;
+    background-color:var(--pine);
+    background-image:url('/yoga.jpg');
+    background-size:cover;background-position:center 35%;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:0 32px;
+  }
+  .atmos::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(38,49,42,0.6),rgba(38,49,42,0.25));
+  }
+  .atmos-text{
+    position:relative;z-index:1;
+    font-family:'Spectral',serif;font-style:italic;font-weight:300;
+    font-size:clamp(1.4rem,3.4vw,2.4rem);line-height:1.35;
+    color:var(--oat);text-shadow:0 2px 24px rgba(0,0,0,0.4);
+    max-width:22ch;
+  }
+
+  /* ── close ── */
+  .close{text-align:center;padding:8rem 0}
+  .close h2{font-family:'Spectral',serif;font-weight:300;
+    font-size:clamp(2rem,5vw,3.4rem);line-height:1.12;color:var(--ink);margin-bottom:2.2rem}
+  .close h2 em{font-style:italic;color:var(--sage-ink)}
+  .close .btn{margin:0.4rem}
+
+  /* ── footer ── */
+  footer{background:var(--pine);color:rgba(238,232,220,0.4);padding:3rem 0}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem}
+  footer a{color:rgba(238,232,220,0.55);text-decoration:none;font-size:0.75rem;
+    letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+  footer a:hover{color:var(--oat)}
+  .foot-links{display:flex;gap:1.8rem}
+  footer p{font-size:0.75rem;letter-spacing:0.04em}
+
+  /* ── reveal ── */
+  .r{opacity:0;transform:translateY(18px);transition:opacity 0.8s ease,transform 0.8s ease}
+  .r.in{opacity:1;transform:none}
+  .r.d1{transition-delay:0.12s}.r.d2{transition-delay:0.24s}
+
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  /* ── responsive ── */
+  @media(max-width:760px){
+    section{padding:5rem 0}
+    .flows{grid-template-columns:1fr}
+    .private-grid{grid-template-columns:1fr;gap:2.2rem}
+    .private-card{position:static}
+    footer .wrap{flex-direction:column;text-align:center}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .r{opacity:1;transform:none}
+    .hero .eyebrow,.hero h1,.hero-sub,.breath,.scroll-cue{opacity:1}
+    .breath-core{transform:scale(0.72)}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="breath" aria-hidden="true">
+    <div class="breath-outer"></div>
+    <div class="breath-core"></div>
+    <span class="breath-label">Breathe in</span>
+  </div>
+  <p class="eyebrow">Yoga with Mike · Online</p>
+  <h1>Move better. Recover better.<br>Feel better. <em>Live better.</em></h1>
+  <p class="hero-sub">Slow, grounded yoga for people who spend too much time in their heads. All levels. No performance, no pretzel poses — just breath, attention, and a way back in.</p>
+  <span class="scroll-cue">Scroll ↓</span>
+</header>
+
+<!-- THE PRACTICE -->
+<section class="band-deep">
+  <div class="wrap">
+    <p class="eyebrow r">The practice</p>
+    <h2 class="display r">Not a workout.<br>A way <em>back in.</em></h2>
+    <p class="lead r d1">This isn't about touching your toes or holding a shape for the photo. It's about noticing what your body has been carrying — and slowly, deliberately, putting some of it down.</p>
+    <ul class="expect r d1">
+      <li>Slow, deliberate movement that follows where you're actually tight</li>
+      <li>Plain cues, no jargon and no spiritual performance</li>
+      <li>Attention on how your body <em>feels</em>, never how it looks</li>
+      <li>Breath and awareness you can carry off the mat and into your day</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GROUP CLASSES + SCHEDULE -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow r">Group classes · Online</p>
+    <h2 class="display r">Show up. Breathe. <em>Begin.</em></h2>
+    <p class="body r d1">Live online classes you can join from your own front room. Come as you are, at whatever level you're at — nobody's watching, and everybody started somewhere.</p>
+
+    <div class="flows r d1">
+      <div class="flow">
+        <h3>Morning Strong Flow</h3>
+        <p class="when">Mon–Thu · 6:30 AM</p>
+        <p>Build heat, strength and focus to start the day grounded and clear.</p>
+      </div>
+      <div class="flow">
+        <h3>Alignment Based Flow</h3>
+        <p class="when">Mon–Thu · 7:30 AM</p>
+        <p>Slower and more precise — learn how the postures actually work, and move in a way your body thanks you for.</p>
+      </div>
+      <div class="flow">
+        <h3>Gentle Flow</h3>
+        <p class="when">Tue &amp; Thu · 4:00 PM</p>
+        <p>Soft and restorative. Release the day, unwind held tension, and come back down into yourself.</p>
+      </div>
+    </div>
+
+    <p class="price-note r d1"><strong>$15 per class.</strong> All levels welcome · Times shown in ACST (Darwin)</p>
+
+    <!-- Embedded booking schedule -->
+    <div class="zenamu-shell r d1">
+      <div id="zenamu-calendar" calendar-id="8538e70fae72a92ef0bbe8ef88737f25"></div>
+      <p class="zenamu-fallback">Calendar not loading? <a href="https://app.zenamu.com/yoga-with-mike?publicView=list" target="_blank" rel="noopener">Open the full schedule →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERIC BREAK -->
+<div class="atmos">
+  <p class="atmos-text">Come back to your body.</p>
+</div>
+
+<!-- PRIVATE SESSIONS -->
+<section class="band-pine on-dark">
+  <div class="wrap">
+    <p class="eyebrow on-dark r">Private sessions</p>
+    <h2 class="display private-head r">One body. One hour.<br><em>Full attention.</em></h2>
+    <p class="lead r d1" style="color:var(--oat);max-width:38ch">A class teaches the room. A private session teaches <em>you</em> — your back, your breath, the exact places you hold tension — at your pace, with nowhere to hide and no one to keep up with.</p>
+
+    <div class="private-grid">
+      <ul class="private-give r d1">
+        <li>Built entirely around your body and where it's actually at today</li>
+        <li>Space to work gently around an injury, stiffness, or old pain</li>
+        <li>Go at your own pace — no class to keep up with, no back row to hide in</li>
+        <li>Ask the questions you'd never raise in a full room</li>
+        <li>Leave with a simple practice that's genuinely yours to keep</li>
+      </ul>
+
+      <div class="private-card r d2">
+        <p class="rate">$80</p>
+        <p class="rate-sub">60-minute private session · online<!-- CONFIRM: price, duration, online/in-person --></p>
+        <p>Whether you're brand new and a little intimidated, or you've practised for years and want to go deeper — this is the most direct way in.</p>
+        <a href="https://mindsetlabs.org/#contact" class="btn light">Enquire about private yoga</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY I TEACH -->
+<section class="band why">
+  <div class="wrap">
+    <p class="eyebrow r">Why I teach</p>
+    <p class="lead r">Yoga gave me a way out of my own head when I badly needed one. I teach because I want it to do that for other people too.</p>
+    <p class="body r d1">Not the intimidating, hyper-flexible, look-at-me version — the honest one. The kind that meets you where your body actually is, treats stiffness and self-consciousness as completely normal, and asks nothing of you except that you show up and breathe.</p>
+    <p class="body r d1">That's the whole aim: not to make you good at yoga, but to help you feel a little more at home in yourself. If that's something you've been looking for, I'd love to practise with you.</p>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="band-deep">
+  <div class="wrap close">
+    <h2 class="r">Whenever you're ready,<br><em>the mat is here.</em></h2>
+    <div class="r d1">
+      <a href="https://app.zenamu.com/yoga-with-mike?publicView=list" target="_blank" rel="noopener" class="btn">Book a class</a>
+      <a href="https://mindsetlabs.org/#contact" class="btn ghost">Enquire about private yoga</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>Yoga with Mike · Mindset Labs</p>
+    <div class="foot-links">
+      <a href="https://mindsetlabs.org/">Mindset Labs</a>
+      <a href="https://www.instagram.com/mike.lea_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://mindsetlabs.org/#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Zenamu schedule embed -->
+<script src="https://zenamu.com/calendar/list.js" crossorigin></script>
+
+<script>
+  // Breathing guide (the signature) — paced to a calming cadence
+  (function(){
+    const core = document.querySelector('.breath-core');
+    const label = document.querySelector('.breath-label');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!core) return;
+    if(reduce){ core.style.transform='scale(0.72)'; if(label) label.textContent='Breathe'; return; }
+    const phases = [
+      {label:'Breathe in',  scale:1,    dur:4000},
+      {label:'Hold',        scale:1,    dur:1600},
+      {label:'Breathe out', scale:0.55, dur:6000},
+      {label:'Rest',        scale:0.55, dur:1400}
+    ];
+    let i = 0;
+    function step(){
+      const p = phases[i % phases.length];
+      core.style.transitionDuration = p.dur + 'ms';
+      core.style.transform = 'scale(' + p.scale + ')';
+      if(label) label.textContent = p.label;
+      i++;
+      setTimeout(step, p.dur);
+    }
+    step();
+  })();
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ obs.observe(el); });
+</script>
+
+</body>
+</html>
