@@ -263,7 +263,17 @@
 
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-
+/* ── testimonials ── */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+  .quote{
+    background:var(--oat);border:1px solid var(--line);
+    padding:2rem 2.1rem;display:flex;flex-direction:column;
+  }
+  .quote-mark{font-family:'Spectral',serif;font-size:2.4rem;line-height:1;color:var(--ember);margin-bottom:0.3rem}
+  .quote-title{font-family:'Spectral',serif;font-style:italic;font-size:1.15rem;color:var(--ink);margin-bottom:0.8rem}
+  .quote p:not(.quote-title){font-size:0.98rem;line-height:1.72;color:var(--ink-soft);margin-bottom:1.3rem}
+  .quote .by{margin-top:auto;font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage-ink)}
+  @media(max-width:760px){.quotes{grid-template-columns:1fr}}
   /* ── responsive ── */
   @media(max-width:760px){
     section{padding:5rem 0}
@@ -376,7 +386,27 @@
     </div>
   </div>
 </section>
-
+<!-- TESTIMONIALS -->
+<section class="band-deep">
+  <div class="wrap">
+    <p class="eyebrow r">In their words</p>
+    <h2 class="display r">You don't have to take <em>my word for it.</em></h2>
+    <div class="quotes">
+      <div class="quote r d1">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-title">A little yoga, a big difference</p>
+        <p>Practising yoga with Mike has genuinely changed my life. Living in a different state, I love that I can join from the comfort of my own home — no travel, no rushing, just roll out the mat, click the link, and we're ready to go. What sets Mike apart is how personal his teaching feels, even through a screen: he watches your form, makes individual adjustments, and suggests ways to improve each pose, so you never feel like you're just following a video. Most of all, it's made a real difference to my chronic pain and how I feel in my body.</p>
+        <span class="by">— Jen</span>
+      </div>
+      <div class="quote r d2">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-title">One of the best things I've committed to</p>
+        <p>Yoga with Mike has been one of the best things I've committed to this past year. I've been through cancer treatment and I'm now in remission, and I take medication daily that can cause ongoing joint pain and stiffness — Mike's classes have been a blessing. He takes the time to understand my limitations and adjusts the class to suit my needs. His supportive, caring approach has made such a positive difference to my mobility, strength and wellbeing. I'm so grateful to have found his classes.</p>
+        <span class="by">— Maria</span>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- WHY I TEACH -->
 <section class="band why">
   <div class="wrap">
