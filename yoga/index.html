@@ -274,6 +274,23 @@
   .quote p:not(.quote-title){font-size:0.98rem;line-height:1.72;color:var(--ink-soft);margin-bottom:1.3rem}
   .quote .by{margin-top:auto;font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage-ink)}
   @media(max-width:760px){.quotes{grid-template-columns:1fr}}
+  /* ── enquiry form ── */
+  .enq{max-width:560px}
+  .enq-form{display:flex;flex-direction:column;gap:1rem;margin-top:2.2rem}
+  .enq-form .row{display:flex;gap:1rem}
+  .enq-form input[type="text"],.enq-form input[type="email"],.enq-form textarea{
+    width:100%;background:#FCFAF4;border:1px solid var(--line);
+    padding:0.95rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.98rem;
+    font-weight:300;color:var(--ink);transition:border-color 0.2s;
+  }
+  .enq-form input::placeholder,.enq-form textarea::placeholder{color:var(--muted)}
+  .enq-form input:focus,.enq-form textarea:focus{outline:none;border-color:var(--sage)}
+  .enq-form textarea{resize:vertical;min-height:120px}
+  .enq-form button.btn{align-self:flex-start}
+  .enq-status{font-size:0.9rem;color:var(--sage-ink);min-height:1.2rem;margin-top:0.2rem}
+  .enq-status.error{color:#B4533F}
+  @media(max-width:600px){.enq-form .row{flex-direction:column}}
+
   /* ── responsive ── */
   @media(max-width:760px){
     section{padding:5rem 0}
@@ -302,7 +319,7 @@
   </div>
   <p class="eyebrow">Yoga with Mike · Online</p>
   <h1>Get out of your head.<br>And back into <em>your body.</em></h1>
-  <p class="hero-sub">Slow, grounded yoga for people who spend too much time in their heads. All levels. No performance, no pretzel poses — just breath, attention, and a way back in.</p>
+  <p class="hero-sub">Slow, grounded yoga for people who spend too much time in their heads. All levels. No performance, no pretzel poses. Just breath, attention, and a way back in.</p>
   <span class="scroll-cue">Scroll ↓</span>
 </header>
 
@@ -311,9 +328,10 @@
   <div class="wrap">
     <p class="eyebrow r">The practice</p>
     <h2 class="display r">Not a workout.<br>A way <em>back in.</em></h2>
-    <p class="lead r d1">This isn't about touching your toes or holding a shape for the photo. It's about noticing what your body has been carrying — and slowly, deliberately, putting some of it down.</p>
+    <p class="lead r d1">This isn't about touching your toes or holding a shape for the photo. It's about noticing what your body has been carrying, then slowly and deliberately putting some of it down.</p>
     <ul class="expect r d1">
       <li>Slow, deliberate movement that follows where you're actually tight</li>
+      <li>Building mobility slowly and safely, unlocking more range of motion in your body</li>
       <li>Plain cues, no jargon and no spiritual performance</li>
       <li>Attention on how your body <em>feels</em>, never how it looks</li>
       <li>Breath and awareness you can carry off the mat and into your day</li>
@@ -326,23 +344,23 @@
   <div class="wrap">
     <p class="eyebrow r">Group classes · Online</p>
     <h2 class="display r">Show up. Breathe. <em>Begin.</em></h2>
-    <p class="body r d1">Live online classes you can join from your own front room. Come as you are, at whatever level you're at — nobody's watching, or judging your downward dog.</p>
+    <p class="body r d1">Live online classes you can join from your own living room. Come as you are, at whatever level you're at. Nobody's watching, or judging your downward dog.</p>
 
     <div class="flows r d1">
       <div class="flow">
         <h3>Morning Strong Flow</h3>
         <p class="when">Mon–Thu · 6:30 AM</p>
-        <p>Build heat, strength and focus to start the day grounded and clear.</p>
+        <p>Exactly what it says on the label: stronger classes, done in the morning. Great for building strength and range of motion in the arms and legs, so you can work towards more advanced poses.</p>
       </div>
       <div class="flow">
         <h3>Alignment Based Flow</h3>
         <p class="when">Mon–Thu · 7:30 AM</p>
-        <p>Slower and more precise — learn how the postures actually work, and move in a way your body thanks you for.</p>
+        <p>Slower, deeper stretches, with more emphasis on building mobility and activating the right muscles in each pose. Challenging, but in a different way to a strong class.</p>
       </div>
       <div class="flow">
         <h3>Gentle Flow</h3>
         <p class="when">Tue &amp; Thu · 4:00 PM</p>
-        <p>Soft and restorative. Release the day, unwind held tension, and come back down into yourself.</p>
+        <p>Great for rehab, easing into a yoga practice, or unwinding at the close of a day. Suitable for all bodies: slow, gentle movement with a big focus on reclaiming range of motion and strength in the joints.</p>
       </div>
     </div>
 
@@ -366,13 +384,13 @@
   <div class="wrap">
     <p class="eyebrow on-dark r">Private sessions</p>
     <h2 class="display private-head r">One body. One hour.<br><em>Full attention.</em></h2>
-    <p class="lead r d1" style="color:var(--oat);max-width:38ch">A class teaches the room. A private session teaches <em>you</em> — your back, your breath, the exact places you hold tension — at your pace, with nowhere to hide and no one to keep up with.</p>
+    <p class="lead r d1" style="color:var(--oat);max-width:38ch">A class teaches the room. A private session teaches <em>you</em>: your back, your breath, the exact places you hold tension, all at your pace, with nowhere to hide and no one to keep up with.</p>
 
     <div class="private-grid">
       <ul class="private-give r d1">
         <li>Built entirely around your body and where it's actually at today</li>
         <li>Space to work gently around an injury, stiffness, or old pain</li>
-        <li>Go at your own pace — no class to keep up with, no back row to hide in</li>
+        <li>Go at your own pace, with no class to keep up with and no back row to hide in</li>
         <li>Ask the questions you'd never raise in a full room</li>
         <li>Leave with a simple practice that's genuinely yours to keep</li>
       </ul>
@@ -380,12 +398,35 @@
       <div class="private-card r d2">
         <p class="rate">$80</p>
         <p class="rate-sub">60-minute private session · online<!-- CONFIRM: price, duration, online/in-person --></p>
-        <p>Whether you're brand new and a little intimidated, or you've practised for years and want to go deeper — this is the most direct way in.</p>
-        <a href="https://mindsetlabs.org/#contact" class="btn light">Enquire about private yoga</a>
+        <p>Whether you're brand new and a little intimidated, or you've practised for years and want to go deeper. This is the most direct way in.</p>
+        <a href="#private-enquiry" class="btn light">Enquire about private yoga</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- PRIVATE ENQUIRY -->
+<section class="band" id="private-enquiry">
+  <div class="wrap enq">
+    <p class="eyebrow r">Private enquiry</p>
+    <h2 class="display r">Let's find your <em>fit.</em></h2>
+    <p class="body r d1">Tell me a little about where you're at and what you're hoping for, and I'll get back to you within 24 hours to work out the right way in.</p>
+    <form class="enq-form r d1" id="enqForm">
+      <input type="hidden" name="access_key" value="7a0cb08b-4d99-46f4-98ae-48aae0cc2a24">
+      <input type="hidden" name="subject" value="Private yoga enquiry">
+      <input type="hidden" name="from_name" value="Yoga page private enquiry">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="row">
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+        <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
+      </div>
+      <textarea name="message" rows="4" placeholder="What are you hoping to work on? Any injuries, goals or questions?" aria-label="Your message" required></textarea>
+      <button type="submit" class="btn">Send enquiry</button>
+      <p class="enq-status" id="enqStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="band-deep">
   <div class="wrap">
@@ -411,9 +452,9 @@
 <section class="band why">
   <div class="wrap">
     <p class="eyebrow r">Why I teach</p>
-    <p class="lead r">Yoga gave me a way out of my own head when I badly needed one. I teach because I want it to do that for other people too.</p>
-    <p class="body r d1">Not the intimidating, hyper-flexible, look-at-me version — the honest one. The kind that meets you where your body actually is, treats stiffness and self-consciousness as completely normal, and asks nothing of you except that you show up and breathe.</p>
-    <p class="body r d1">That's the whole aim: not to make you good at yoga, but to help you feel a little more at home in yourself. If that's something you've been looking for, I'd love to practise with you.</p>
+    <p class="lead r">I remember life before yoga, when calm was rare and my range of motion was almost non-existent.</p>
+    <p class="body r d1">I thought I just had the flexibility of a brick. Turns out I simply wasn't doing anything to change that.</p>
+    <p class="body r d1">My wish is to use yoga to show people how good they can feel in their body, and in their life. If that's something you've been looking for, I'd love to practise with you.</p>
   </div>
 </section>
 
@@ -423,7 +464,7 @@
     <h2 class="r">Whenever you're ready,<br><em>the mat is here.</em></h2>
     <div class="r d1">
       <a href="https://app.zenamu.com/yoga-with-mike?publicView=list" target="_blank" rel="noopener" class="btn">Book a class</a>
-      <a href="https://mindsetlabs.org/#contact" class="btn ghost">Enquire about private yoga</a>
+      <a href="#private-enquiry" class="btn ghost">Enquire about private yoga</a>
     </div>
   </div>
 </section>
@@ -474,6 +515,25 @@
     entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
   }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.r').forEach(function(el){ obs.observe(el); });
+
+  // Private enquiry form (Web3Forms)
+  var pform = document.getElementById('enqForm');
+  var pstatus = document.getElementById('enqStatus');
+  if (pform) {
+    pform.addEventListener('submit', async function(e){
+      e.preventDefault();
+      pstatus.classList.remove('error');
+      pstatus.textContent = 'Sending...';
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', {
+          method:'POST', headers:{'Accept':'application/json'}, body:new FormData(pform)
+        });
+        var data = await res.json();
+        if (data.success) { pform.reset(); pstatus.textContent = "Thanks, your enquiry is on its way. I'll get back to you within 24 hours."; }
+        else { pstatus.classList.add('error'); pstatus.textContent = 'Something went wrong. Please try again in a moment.'; }
+      } catch(err){ pstatus.classList.add('error'); pstatus.textContent = 'Network error. Please try again.'; }
+    });
+  }
 </script>
 
 </body>
