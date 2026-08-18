@@ -291,6 +291,18 @@
   .enq-status.error{color:#B4533F}
   @media(max-width:600px){.enq-form .row{flex-direction:column}}
 
+  /* ── corporate commit block ── */
+  .commit{background:var(--oat);border:1px solid var(--line);padding:2.4rem;margin-top:2.5rem;max-width:640px}
+  .commit-tag{font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-ink);margin-bottom:0.8rem}
+  .commit-title{font-family:'Spectral',serif;font-weight:300;font-size:1.6rem;color:var(--ink);margin-bottom:0.9rem}
+  .commit p{font-size:0.98rem;color:var(--ink-soft);margin-bottom:1.2rem}
+  .commit-list{list-style:none;margin:0 0 1.6rem}
+  .commit-list li{padding:0.7rem 0;border-bottom:1px solid var(--line);border-top:0;display:flex;gap:0.8rem;align-items:baseline;font-size:0.95rem;color:var(--ink)}
+  .commit-list li::before{content:'\2192';color:var(--sage-ink);flex-shrink:0}
+  .commit-list li:first-child{border-top:1px solid var(--line)}
+  .enq-form select{width:100%;background:#FCFAF4;border:1px solid var(--line);padding:0.95rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.98rem;font-weight:300;color:var(--ink);transition:border-color 0.2s}
+  .enq-form select:focus{outline:none;border-color:var(--sage)}
+
   /* ── responsive ── */
   @media(max-width:760px){
     section{padding:5rem 0}
@@ -405,6 +417,36 @@
   </div>
 </section>
 
+<!-- CORPORATE / TEAMS -->
+<section class="band" id="teams">
+  <div class="wrap">
+    <p class="eyebrow r">Yoga for teams</p>
+    <h2 class="display r">Bring it to <em>your team.</em></h2>
+    <p class="lead r d1">Desks are hard on bodies. A regular team practice is one of the simplest ways to undo some of that, together.</p>
+    <p class="body r d1">The setup is easy: I come to you. You provide the space and the people, everyone brings a mat, and I bring the session and lead it. An office, a rooftop, a patch of park, whatever works. All levels, all bodies, no experience needed.</p>
+
+    <ul class="expect r d1">
+      <li>I come to your workplace, or a public space nearby</li>
+      <li>You gather the team; everyone brings their own mat</li>
+      <li>Sessions built for real bodies at real desks, all levels welcome</li>
+      <li>Movement that loosens stiff necks, backs and shoulders</li>
+    </ul>
+
+    <div class="commit r d1">
+      <p class="commit-tag">Commit to a block</p>
+      <h3 class="commit-title">Where the real change happens</h3>
+      <p>One-off sessions feel good. A few weeks in a row is where it adds up. Over a multi-week block (from four weeks), a team can expect:</p>
+      <ul class="commit-list">
+        <li>Less stiffness and fewer aches from long hours at a desk</li>
+        <li>Better posture, mobility and range of motion, week on week</li>
+        <li>Lower stress and sharper focus through the working day</li>
+        <li>A stronger sense of connection and morale across the team</li>
+      </ul>
+      <a href="#private-enquiry" class="btn">Enquire about team yoga</a>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="band-deep">
   <div class="wrap">
@@ -449,14 +491,21 @@
 <!-- PRIVATE ENQUIRY -->
 <section class="band" id="private-enquiry">
   <div class="wrap enq">
-    <p class="eyebrow r">Private enquiry</p>
+    <p class="eyebrow r">Enquire</p>
     <h2 class="display r">Let's find your <em>fit.</em></h2>
-    <p class="body r d1">Tell me a little about where you're at and what you're hoping for, and I'll get back to you within 24 hours to work out the right way in.</p>
+    <p class="body r d1">Whether you're after private 1:1 sessions or yoga for your team, tell me what you're looking for and I'll get back to you within 24 hours.</p>
     <form class="enq-form r d1" id="enqForm">
       <input type="hidden" name="access_key" value="7a0cb08b-4d99-46f4-98ae-48aae0cc2a24">
-      <input type="hidden" name="subject" value="Private yoga enquiry">
+      <input type="hidden" name="subject" value="Yoga enquiry (website)">
       <input type="hidden" name="from_name" value="Yoga page private enquiry">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <select name="interested_in" aria-label="I'm interested in" required>
+        <option value="" disabled selected>I'm interested in...</option>
+        <option>Private 1:1 sessions</option>
+        <option>Yoga for my team</option>
+        <option>Group classes</option>
+        <option>Something else</option>
+      </select>
       <div class="row">
         <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
         <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
